@@ -27,14 +27,9 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
       });
     });
 
-
-    
-
-
     $('#addMovie').click(function() {
       console.log('click');
       addMovies.addMovie();
-
     });
 
     $( document ).on( "click", "#deleteButton", function() {
@@ -46,10 +41,12 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
 
     $( document ).on( "click", "#okButton", function() {
       var watchedKey = $(this).parent().attr("key");
-      console.log("watchedKey", watchedKey);
-      //$(this).parent().css("opacity", "0.4");
       var seenIt = new Firebase('https://movie-project.firebaseio.com/movies/' + watchedKey);
-      seenIt.update({'seen-it': true});
+      if ( $(this).attr("seen") === "false" ) {
+        seenIt.update({'seen-it': true});
+      } else {
+        seenIt.update({'seen-it': false});
+      };
     });
 
   });
