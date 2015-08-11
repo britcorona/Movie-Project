@@ -1,5 +1,5 @@
 requirejs.config({
-  baseUrl: './javascript',
+  baseUrl: './javascripts',
   paths: {
     'jquery': '../bower_components/jquery/dist/jquery.min',
     'firebase': '../bower_components/firebase/firebase',
@@ -14,3 +14,20 @@ requirejs.config({
     }
   }
 });
+
+requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
+  function($, bootstrap, Handlebars, _firebase, _, addMovies) {
+    var ref = new Firebase("https://movie-project.firebaseio.com/");
+    require(['hbs!../templates/movie-list'], function(movieTemplate) {
+      ref.on('value', function(snapshot) {
+        var movies = snapshot.val();
+        console.log(movies);
+        $('#movieList').html(movieTemplate(movies));
+      })
+    });
+
+    $('#addMovie').click(function() {
+      console.log('click');
+      addMovies.addMovie();
+    })
+  });
