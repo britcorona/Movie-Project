@@ -33,19 +33,11 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
     });
 
     $( document ).on( "click", "#deleteButton", function() {
-<<<<<<< HEAD
-    var titleKey = $(this).parent().attr("key");
-    console.log("titleKey", titleKey);
-    var fb = new Firebase('https://movie-project.firebaseio.com/movies' + titleKey);
-    fb.remove();
-  });
-=======
       var titleKey = $(this).parent().attr("key");
       console.log("titleKey", titleKey);
       var fb = new Firebase('https://movie-project.firebaseio.com/movies/' + titleKey);
       fb.remove();
     });
->>>>>>> d41f802dd9337de4eb21064c3ada3491dc667e7b
 
     $( document ).on( "click", "#okButton", function() {
       var watchedKey = $(this).parent().attr("key");
