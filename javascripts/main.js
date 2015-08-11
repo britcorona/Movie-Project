@@ -34,7 +34,7 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
     $( document ).on( "click", "#deleteButton", function() {
     var titleKey = $(this).parent().attr("key");
     console.log("titleKey", titleKey);
-    var fb = new Firebase('https://movie-project.firebaseio.com/' + titleKey);
+    var fb = new Firebase('https://movie-project.firebaseio.com/movies' + titleKey);
     fb.remove();
   });
 
