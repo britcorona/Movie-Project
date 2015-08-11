@@ -1,10 +1,13 @@
 {{#each movies}}
-  <div class='movie-name' key="{{@key}}" seen="{{seen-it}}">{{title}}  
+  <div class='movie-name' key="{{@key}}" seen="{{seen-it}}" rating="{{rating}}">{{title}}  
     <button type="button" class="btn btn-default btn-sm" id="deleteButton">remove
       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </button>
     <button type="button" class="btn btn-default btn-sm" id="okButton">seen it
-        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-      </button>
+      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+    </button>
+    <div class="rating" rating="{{rating}}">
+      <span value="10">☆</span><span value="8">☆</span><span value="6">☆</span><span value="4">☆</span><span value="2">☆</span>
+    </div>
   </div>
 {{/each}}

@@ -7,6 +7,45 @@
   width: 20%;
   float: left; }
 
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl; }
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em; }
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute; }
+
+.two > span:nth-child(5):before,
+.two > span:nth-child(5) ~ span:before {
+  content: "\2605";
+  position: absolute; }
+
+.four > span:nth-child(4):before,
+.four > span:nth-child(4) ~ span:before {
+  content: "\2605";
+  position: absolute; }
+
+.six > span:nth-child(3):before,
+.six > span:nth-child(3) ~ span:before {
+  content: "\2605";
+  position: absolute; }
+
+.eight > span:nth-child(2):before,
+.eight > span:nth-child(2) ~ span:before {
+  content: "\2605";
+  position: absolute; }
+
+.ten > span:nth-child(1):before,
+.ten > span:nth-child(1) ~ span:before {
+  content: "\2605";
+  position: absolute; }
+
 /*!
  * Yamm!3 - Yet another megamenu for Bootstrap 3
  * http://geedmo.github.com/yamm3
