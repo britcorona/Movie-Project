@@ -12,7 +12,8 @@ define(['jquery', 'firebase'], function($, _firebase) {
           "actors": data.Actors,
           "year": data.Year,
           "seen-it": false,
-          "rating": 0
+          "rating": 0,
+          "image-url": "http://img.omdbapi.com/?i=" + data.imdbID + "&apikey=8513e0a1"
         });
         $("#titleInput").val("");
       });
