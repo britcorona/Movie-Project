@@ -9,7 +9,8 @@
 
 .rating {
   unicode-bidi: bidi-override;
-  direction: rtl; }
+  direction: rtl;
+  color: #F39C12; }
 
 .rating > span {
   display: inline-block;
