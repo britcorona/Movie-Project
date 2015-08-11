@@ -1,4 +1,35 @@
-#searchLi {
-  width: 100%; }
+#titleInput {
+  width: 75%;
+  margin-right: 0.5%;
+  float: left; }
+
+#addMovie {
+  width: 20%;
+  float: left; }
+
+/*!
+ * Yamm!3 - Yet another megamenu for Bootstrap 3
+ * http://geedmo.github.com/yamm3
+ * 
+ * @geedmo - Licensed under the MIT license
+ */
+.yamm .nav,
+.yamm .collapse,
+.yamm .dropup,
+.yamm .dropdown {
+  position: static; }
+
+.yamm .container {
+  position: relative; }
+
+.yamm .dropdown-menu {
+  left: auto; }
+
+.yamm .yamm-content {
+  padding: 20px 30px; }
+
+.yamm .dropdown.yamm-fw .dropdown-menu {
+  left: 0;
+  right: 0; }
 
 /*# sourceMappingURL=main.css.map */
