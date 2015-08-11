@@ -14,6 +14,7 @@ define(['jquery', 'firebase'], function($, _firebase) {
           "seen-it": false,
           "rating": 0
         });
+        $("#titleInput").val("");
       });
     }
   };
