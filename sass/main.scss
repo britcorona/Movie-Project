@@ -10,10 +10,20 @@
   float: left;
 }
 
+#movieList {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.movie-name {
+  padding: 5px;
+}
+
 .rating {
   unicode-bidi: bidi-override;
   direction: rtl;
   color: #F39C12;
+  display: inline-block;
 }
 .rating > span {
   display: inline-block;
