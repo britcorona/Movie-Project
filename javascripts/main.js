@@ -30,4 +30,19 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
       console.log('click');
       addMovies.addMovie();
     })
+
+    $( document ).on( "click", "#deleteButton", function() {
+    var titleKey = $(this).parent().attr("key");
+    console.log("titleKey", titleKey);
+    var fb = new Firebase('https://movie-project.firebaseio.com/' + titleKey);
+    fb.remove();
   });
+
+    $( document ).on( "click", "#okButton", function() {
+    var watchedKey = $(this).parent().attr("key");
+    console.log("watchedKey", watchedKey);
+    var fb = new Firebase('https://movie-project.firebaseio.com/' + watchedKey);
+    fb.push();
+  });
+
+});
