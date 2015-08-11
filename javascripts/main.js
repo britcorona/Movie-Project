@@ -42,7 +42,9 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
     $( document ).on( "click", "#okButton", function() {
       var watchedKey = $(this).parent().attr("key");
       var seenIt = new Firebase('https://movie-project.firebaseio.com/movies/' + watchedKey);
-      if ( $(this).attr("seen") === "false" ) {
+      console.log('click');
+      if ( $(this).parent().attr("seen") === "false" ) {
+
         seenIt.update({'seen-it': true});
       } else {
         seenIt.update({'seen-it': false});
