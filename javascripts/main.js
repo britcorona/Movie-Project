@@ -38,10 +38,6 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
       var fb = new Firebase('https://movie-project.firebaseio.com/movies/' + titleKey);
       fb.remove();
     });
-<<<<<<< HEAD
-
-=======
->>>>>>> 7c9a494a767ff6d89b6b7b24d3c73a07fb794437
 
     $( document ).on( "click", "#okButton", function() {
       var watchedKey = $(this).parent().attr("key");
