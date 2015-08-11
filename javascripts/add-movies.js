@@ -10,7 +10,9 @@ define(['jquery', 'firebase'], function($, _firebase) {
         ref.push({
           "title": data.Title,
           "actors": data.Actors,
-          "year": data.Year
+          "year": data.Year,
+          "seen-it": false,
+          "rating": 0
         });
       });
     }
