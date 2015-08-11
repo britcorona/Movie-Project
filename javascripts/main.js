@@ -23,11 +23,11 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
         var movies = snapshot.val();
         console.log(movies);
         $('#movieList').html(movieTemplate(movies));
-      })
+      });
     });
 
     $('#addMovie').click(function() {
       console.log('click');
       addMovies.addMovie();
-    })
+    });
   });
