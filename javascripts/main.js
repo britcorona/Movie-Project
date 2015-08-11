@@ -23,8 +23,13 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
         var movies = snapshot.val();
         console.log(movies);
         $('#movieList').html(movieTemplate(movies));
+        $('div').filter('[seen="true"]').css('opacity', "0.4");
       });
     });
+
+
+    
+
 
     $('#addMovie').click(function() {
       console.log('click');
@@ -42,7 +47,7 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
     $( document ).on( "click", "#okButton", function() {
       var watchedKey = $(this).parent().attr("key");
       console.log("watchedKey", watchedKey);
-      $(this).parent().css("opacity", "0.4");
+      //$(this).parent().css("opacity", "0.4");
       var seenIt = new Firebase('https://movie-project.firebaseio.com/movies/' + watchedKey);
       seenIt.update({'seen-it': true});
     });
