@@ -42,8 +42,10 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
     $( document ).on( "click", "#okButton", function() {
       var watchedKey = $(this).parent().attr("key");
       console.log("watchedKey", watchedKey);
-      var fb = new Firebase('https://movie-project.firebaseio.com/' + watchedKey);
-      fb.push();
+      var seenIt = new Firebase('https://movie-project.firebaseio.com/movies/' + watchedKey);
+      seenIt.push();
+      $(this).parent().css("opacity", "0.4");
+    
     });
 
   });
