@@ -65,5 +65,31 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
       rating.update({'rating': value});
     });
 
+    var $modal = $('.modal').modal({
+      show: false
+    });
+
+    require(['hbs!../templates/modal'], function(modalTemplate) {
+      $(document).on('click', '.movie-name > img', function() {
+        var modalKey = $(this).parent().attr("key");
+        var modalInfo = new Firebase('https://movie-project.firebaseio.com/movies/' + modalKey);
+        modalInfo.on('value', function(snapshot) {
+          var movieInfo = snapshot.val();
+          console.log(movieInfo);
+          var title = movieInfo.title.toLowerCase();
+          console.log("http://trailersapi.com/trailers.json?movie="+title+"&limit=5")
+          $.ajax({
+            url: "http://trailersapi.com/trailers.json?movie="+title+"&limit=5"
+          }).done(function(data) {
+            console.log(data);
+            $('#movie-modal').html(modalTemplate(movieInfo));
+            $('#trailer').html(data[0].code);
+            $modal.modal('show');
+          });
+          
+        });
+      });
+    });
+
   });
 

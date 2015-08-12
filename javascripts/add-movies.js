@@ -13,6 +13,8 @@ define(['jquery', 'firebase'], function($, _firebase) {
           "year": data.Year,
           "seen-it": false,
           "rating": 0,
+          "imdb": data.imdbID,
+          "plot": data.Plot,
           "image-url": "http://img.omdbapi.com/?i=" + data.imdbID + "&apikey=8513e0a1"
         });
         $("#titleInput").val("");
