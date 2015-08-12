@@ -120,7 +120,11 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies", "jq
           }).done(function(data) {
             console.log(data);
             $('#movie-modal').html(modalTemplate(movieInfo));
-            $('#trailer').html(data[0].code);
+            if (data.length > 0) {
+              $('#trailer').html(data[0].code);
+            } else {
+              $('#trailer').html('No trailer available');
+            }
             $modal.modal('show');
           });
           
