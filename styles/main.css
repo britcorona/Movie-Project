@@ -3,6 +3,10 @@
   margin-right: 0.5%;
   float: left; }
 
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
+  background-image: none;
+  background-color: #303030; }
+
 #addMovie {
   width: 20%;
   float: left; }

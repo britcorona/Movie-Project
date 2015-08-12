@@ -77,7 +77,6 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
           var movieInfo = snapshot.val();
           console.log(movieInfo);
           var title = movieInfo.title.toLowerCase();
-          console.log("http://trailersapi.com/trailers.json?movie="+title+"&limit=5")
           $.ajax({
             url: "http://trailersapi.com/trailers.json?movie="+title+"&limit=5"
           }).done(function(data) {
