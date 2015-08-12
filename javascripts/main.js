@@ -5,7 +5,8 @@ requirejs.config({
     'firebase': '../bower_components/firebase/firebase',
     'hbs': '../bower_components/require-handlebars-plugin/hbs',
     'lodash': '../bower_components/lodash/lodash.min',
-    'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap.min'
+    'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap.min',
+    'jquery-ui': '../bower_components/jquery-ui/jquery-ui.min'
   },
   shim: {
     'bootstrap': ['jquery'],
@@ -15,8 +16,8 @@ requirejs.config({
   }
 });
 
-requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
-  function($, bootstrap, Handlebars, _firebase, _, addMovies) {
+requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies", "jquery-ui"],
+  function($, bootstrap, Handlebars, _firebase, _, addMovies, ui) {
     var ref = new Firebase("https://movie-project.firebaseio.com/");
     require(['hbs!../templates/movie-list'], function(movieTemplate) {
       ref.on('value', function(snapshot) {
@@ -38,6 +39,43 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies"],
       console.log('click');
       addMovies.addMovie();
     });
+
+    $("#titleInput").keypress(function(){
+      $('#titleInput').autocomplete({
+     source:
+       function (query, process) {
+        console.log(query.term);
+         $.when(
+           $.ajax({
+               url: "http://www.omdbapi.com/?s=" + query.term
+           })
+         ).then(function (data) {
+           var process_data = [];
+           $.each(data.Search.slice(0, 4), function(i,item) {
+              process_data.push( { title: item.Title, year: item.Year, label: item.Title, image: "http://img.omdbapi.com/?i=" + item.imdbID + "&apikey=8513e0a1"} );
+              process( process_data );
+             });
+           });
+       
+     },
+    
+     select: function (e, ui) {
+       e.preventDefault();
+       $("#titleInput").val(ui.item.label);
+       addMovies.addMovie();
+     },
+     messages: {
+       noResults: '',
+       results: function() {}
+     }
+   })
+   .data('ui-autocomplete')._renderItem = function(ul, item) {
+     return $('<li>')
+         .data( "ui-autocomplete-item", item)
+         .append('<a>' + '<img width="50" src="' + item.image + '" alt="" />' + '<span class="ui-autocomplete-artist">' + item.title  + '</span>' + '<span class="ui-autocomplete-divider"><i class="fa fa-minus"></i></span>' + '<span class="ui-autocomplete-album-name">' + item.year  + '</span>' + '<span class="ui-autocomplete-icon pull-right"><i class="fa fa-plus-circle fa-2x"></i></span>' + '</a>')
+         .appendTo(ul);
+    };
+  }); 
 
     
 
