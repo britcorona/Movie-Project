@@ -40,6 +40,9 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies", "jq
       addMovies.addMovie();
     });
 
+
+//Movie Trailer Code    
+
     $("#titleInput").keypress(function(){
       $('#titleInput').autocomplete({
      source:
@@ -76,9 +79,11 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies", "jq
          .appendTo(ul);
     };
   }); 
+// End of Movie Trailer Code 
 
-    
 
+
+  //Delete Button
     $( document ).on( "click", "#deleteButton", function() {
       var titleKey = $(this).parent().attr("key");
       console.log("titleKey", titleKey);
@@ -86,6 +91,8 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies", "jq
       fb.remove();
     });
 
+
+  //Seen-It Feature
     $( document ).on( "click", "#okButton", function() {
       var watchedKey = $(this).parent().attr("key");
       var seenIt = new Firebase('https://movie-project.firebaseio.com/movies/' + watchedKey);
@@ -96,6 +103,8 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies", "jq
       }
     });
 
+
+  //Star Rating Feature
     $(document).on('click', '.rating span', function() {
       var value = $(this).attr('value');
       var starKey = $(this).parent().parent().attr('key');
@@ -107,6 +116,8 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies", "jq
       show: false
     });
 
+
+  //Pop Up Box with Movie Info
     require(['hbs!../templates/modal'], function(modalTemplate) {
       $(document).on('click', '.movie-name > img', function() {
         var modalKey = $(this).parent().attr("key");
