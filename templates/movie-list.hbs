@@ -1,6 +1,7 @@
 {{#each movies}}
   <div class='movie-name' key="{{@key}}" seen="{{seen-it}}" rating="{{rating}}">{{title}}<br>
-    <img src="{{image-url}}" alt="{{title}}"><br>  
+    <img src="{{image-url}}" alt="{{title}}">
+    <br>  
     <button type="button" class="btn btn-danger btn-xs" id="deleteButton">remove
       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </button>
