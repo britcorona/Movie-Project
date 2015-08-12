@@ -194,3 +194,7 @@
 .ui-helper-hidden-accessible {
   display: none;
 }
+
+.ui-state-focus {
+  background-color: #74898a; 
+}
