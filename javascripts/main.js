@@ -121,7 +121,12 @@ requirejs(["jquery", "bootstrap", "hbs", "firebase", "lodash", "add-movies", "jq
             console.log(data);
             $('#movie-modal').html(modalTemplate(movieInfo));
             if (data.length > 0) {
-              $('#trailer').html(data[0].code);
+              var trailerTitle = data[0].title.toLowerCase();
+              if (trailerTitle.indexOf(title) !== -1) {
+                $('#trailer').html(data[0].code);
+              } else {
+                $('#trailer').html('No trailer available');
+              }
             } else {
               $('#trailer').html('No trailer available');
             }
